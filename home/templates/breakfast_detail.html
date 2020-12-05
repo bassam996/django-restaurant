@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+    <section class="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="blog-item">
+                      {% if mealdetail.image %}
+                        <img src="{{ mealdetail.image.url }}" alt="">
+                      {% endif %}
+                        <div class="down-content">
+                            <h3>{{mealdetail.title}}</h3> <br>
+                            <p>{{mealdetail.desc}}</p> <br>
+                          <form method="post" class="form">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            {% buttons %}
+                            <button type="submit" class="btn btn-primary">Order Now</button>
+                            {% endbuttons %}
+                        </form>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}
